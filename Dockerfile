@@ -1,19 +1,21 @@
-FROM ubuntu:18.10
+FROM nginx:stable
 
 ENV APP_DIR /app
+COPY . ${APP_DIR}
 ENV HUGO_VERSION 0.50
 
-RUN apt-get -y update && \
+RUN echo "#### Update container" && \
+    apt-get -y update && \
     apt-get -y upgrade
 
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb /tmp/hugo.deb
-RUN dpkg -i /tmp/hugo.deb && \
+RUN echo "#### Install hugo" && \
+    dpkg -i /tmp/hugo.deb && \
     rm /tmp/hugo.deb
 
-RUN useradd -d ${APP_DIR} -m -u 1000 developer
-
-EXPOSE 8000
-USER developer
-WORKDIR ${APP_DIR}
-
-CMD hugo server -D --bind 0.0.0.0 -p 8000
+RUN echo "#### Building site" && \
+    hugo -s ${APP_DIR} -d /usr/share/nginx/html && \
+    echo "#### Cleanup..." && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get remove -y hugo && \
+    rm -rf /app
