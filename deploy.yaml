@@ -17,6 +17,7 @@
           name: 'yesimnathan/imeating.today'
           tag: 'latest'
           path: '/tmp/imeating.today'
+          force: true
 
     - name: 'imeating.today container deploy'
       docker_container:

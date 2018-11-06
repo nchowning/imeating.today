@@ -16,7 +16,7 @@ customCSS = ["css/custom.css"]
 [params.info]
 adsense = "" # Adsense ID (ID only, without ca-pub-)
 enableSocial = true # Adds OpenGraph and Twitter cards
-homeTitle = "home" # Title for home page
+homeTitle = "imeating.today" # Title for home page
 poweredby = true # Adds powered by hugo and kiss below Copyright
 related = true # Includes related articles at the bottom of the article
 
@@ -32,7 +32,7 @@ rss = "index.xml" # Add this to show RSS button in social.
 platforms = ["email","twitter","rss"]
 
 [taxonomies]
-tag ="tags"
+tag = "tags"
 
 [blackfriday]
 hrefTargetBlank = true
