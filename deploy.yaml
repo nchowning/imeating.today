@@ -1,0 +1,38 @@
+---
+- hosts: toad
+  become: true
+  tasks:
+    - name: 'ensure git is installed'
+      package:
+        name: 'git'
+        state: present
+
+    - name: 'pull imeating.today code from github'
+      git:
+        repo: 'https://github.com/nchowning/imeating.today.git'
+        dest: '/tmp/imeating.today'
+
+    - name: 'build imeating.today docker image'
+      docker_image:
+          name: 'yesimnathan/imeating.today'
+          tag: 'latest'
+          path: '/tmp/imeating.today'
+
+    - name: 'imeating.today container deploy'
+      docker_container:
+        image: 'yesimnathan/imeating.today'
+        labels:
+          traefik.docker.network: 'web'
+          traefik.frontend.rule: 'Host: imeating.today'
+        name: 'imeating.today'
+        networks:
+          - name: 'bridge'
+          - name: 'web'
+        recreate: true
+        restart: true
+        state: started
+
+    - name: 'delete code'
+      file:
+        path: '/tmp/imeating.today'
+        state: absent
