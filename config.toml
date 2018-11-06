@@ -1,0 +1,38 @@
+baseURL = "https://imeating.today/"
+languageCode = "en-us"
+title = "imeating.today"
+theme = "kiss"
+copyright = "&copy; <a href=\"https:/nathan.chowning.me\">Nathan Chowning</a> 2018"
+Paginate = 10
+
+[params.rss] # Adding this tag enables RSS feed
+includeContent = true # Includes whole content in rss
+authorName = "Nathan Chowning" # Author full name
+authorEmail = "nathan@chowning.me" # Author email
+
+[params.assets]
+customCSS = ["css/custom.css"]
+
+[params.info]
+adsense = "" # Adsense ID (ID only, without ca-pub-)
+enableSocial = true # Adds OpenGraph and Twitter cards
+homeTitle = "home" # Title for home page
+poweredby = true # Adds powered by hugo and kiss below Copyright
+related = true # Includes related articles at the bottom of the article
+
+[params.social]
+twitter = "nbchowning"
+email = "nathan@chowning.me"
+facebook = ""
+instagram = ""
+codepen = ""
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["email","twitter","rss"]
+
+[taxonomies]
+tag ="tags"
+
+[blackfriday]
+hrefTargetBlank = true
