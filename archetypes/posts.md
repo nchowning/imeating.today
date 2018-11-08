@@ -2,6 +2,11 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
+tags:
+  - 'journal'
+  - 'food'
+  - 'activity'
+  - 'ddr'
 ---
 <!--more-->
 
