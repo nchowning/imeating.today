@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "imeating.today"
 theme = "kiss"
 copyright = "&copy; <a href=\"https:/nathan.chowning.me\">Nathan Chowning</a> 2018"
-Paginate = 10
+Paginate = 5
 
 [params.rss] # Adding this tag enables RSS feed
 includeContent = true # Includes whole content in rss
